@@ -9,11 +9,11 @@ app.use(cors());
 app.use(express.json());
 
 // Conectar a MongoDB
-const uri = 'mongodb+srv://daniel:sahuma@cluster0.rmw15.mongodb.net/?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://daniel:sahuma@cluster0.rmw15.mongodb.net/biblioteca?retryWrites=true&w=majority';
 mongoose.connect(uri)
     .then(() => console.log('Conectado a MongoDB'))
     .catch(err => console.error('Error al conectar a MongoDB', err));
-
+    
 // Esquema y modelo para Préstamos
 const prestamoSchema = new mongoose.Schema({
     id: Number,
