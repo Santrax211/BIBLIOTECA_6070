@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "react-google-recaptcha": "^3.1.0",
+    "react-scripts": "^5.0.1"
+  },
+    "scripts": {
+      "start:frontend": "npm --prefix ./biblio-app/frontend start",
+      "start:backend": "npm --prefix ./biblio-app/backend start",
+      "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\""
+    },
+    "devDependencies": {
+      "concurrently": "^7.0.0"
+    }
+}

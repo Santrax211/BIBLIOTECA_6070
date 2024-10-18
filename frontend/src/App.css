@@ -1,0 +1,195 @@
+/* Estilos generales */
+body {
+  font-family: Verdana, sans-serif;
+  background: url("./assets/images/biblioteca-fondo.jpg") no-repeat center center;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal del formulario */
+.login-container {
+  width: 400px;
+  height: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+  text-align: center;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+/* Formulario de login */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Logo de la escuela */
+.school-logo {
+  width: 100px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+/* Agrupación de los campos del formulario */
+.form-group {
+  position: relative;
+  width: 75%;
+  margin-bottom: 15px;
+}
+
+/* Estilo de los íconos de usuario y contraseña */
+.icon {
+  position: absolute;
+  left: 20px;
+  top: 65%;
+  transform: translateY(-50%);
+  color: #333;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+
+/* Estilo para los campos de entrada */
+input {
+  width: 80%;
+  padding: 10px 10px 10px 35px;  /* Espacio para los íconos */
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Estilo del botón de inicio de sesión */
+.login-btn {
+  background-color: #00aaff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 40%;
+  font-family: Verdana, sans-serif;
+}
+
+/* Efecto hover en el botón de inicio de sesión */
+.login-btn:hover {
+  background-color: #033f5e;
+}
+
+/* Mensaje de error */
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+/* Ajuste para el CAPTCHA */
+.recaptcha-container {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+/*dashboard*/
+/* Contenedor principal */
+.app-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #d80300; /* Color rojo */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Header del Sidebar (Logo y nombre de la institución) */
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.school-logo {
+  width: 120px; /* Tamaño del logo */
+  margin-bottom: 10px;
+}
+
+.sidebar-header h2 {
+  font-size: 16px;
+  margin: 0;
+  text-align: center;
+}
+
+/* Menú del Sidebar */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  width: 100%; /* Asegura que el menú ocupe todo el ancho del sidebar */
+}
+
+/* Estilo de los ítems del menú */
+.sidebar-menu li {
+  display: flex; /* Flexbox para alinear ícono y texto */
+  align-items: center; /* Alinea verticalmente los íconos y el texto */
+  padding: 15px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Línea divisoria */
+  width: 100%; /* Asegura que el contenido del <li> ocupe todo el ancho */
+}
+
+.sidebar-menu li:hover {
+  background-color: #b71c1c; /* Efecto hover */
+}
+
+#icon {
+  margin-top: 0px;
+  margin-right: 10px;
+  font-size: 20px;
+  display: flex;
+}
+
+/* Texto del menú alineado a la izquierda */
+.sidebar-menu li span {
+  margin-left: 20px; 
+  text-align: left;
+}
+
+/* Contenido principal */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff; /* Fondo blanco */
+}
+
+.main-content h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333; /* Color del texto */
+}
+
+.main-content p {
+  font-size: 18px;
+  color: #333;
+}
