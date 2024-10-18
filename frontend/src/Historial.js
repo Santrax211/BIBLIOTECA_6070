@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBook, faUndo, faSignOutAlt, faRecordVinyl } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Asegúrate de importar Link
 import logo from './assets/images/logo.jpeg';
 import './App.css';
 
-function Devoluciones() {
-    const [devoluciones, setDevoluciones] = useState([]);
+function Historial() {
+    const [historial, setHistorial] = useState([]);
 
-    // Efecto para obtener la lista de devoluciones
+    // Obtener el historial desde el backend
     useEffect(() => {
-        fetch('http://localhost:5000/api/devoluciones')
+        fetch('http://localhost:5000/api/historial')
             .then(response => response.json())
-            .then(data => setDevoluciones(data))
-            .catch(error => console.error('Error al obtener la lista de devoluciones:', error));
+            .then(data => setHistorial(data))
+            .catch(error => console.error('Error al obtener el historial:', error));
     }, []);
 
     return (
@@ -43,32 +43,34 @@ function Devoluciones() {
                     </li>
                     <li>
                         <FontAwesomeIcon icon={faSignOutAlt} id="icon" />
-                        <Link to="/logout" className="menu-link">Cerrar Sesión</Link>
+                        <Link to="/" className="menu-link">Cerrar Sesión</Link>
                     </li>
                 </ul>
             </div>
 
             {/* Contenido principal */}
             <div className="main-content">
-                <h1>Lista de Devoluciones</h1>
-                <table className="table-devoluciones">
+                <h1>Historial de Préstamos y Devoluciones</h1>
+                <table className="table-historial">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>ID Préstamo</th>
-                            <th>Nombre de Usuario</th>
-                            <th>Fecha Dev.</th>
-                            <th>Multa</th>
+                            <th>Tipo</th> {/* Préstamo o Devolución */}
+                            <th>Nombre del Libro</th>
+                            <th>Usuario</th>
+                            <th>Fecha</th>
+                            <th>Estado/Multa</th> {/* Estado para préstamos, multa para devoluciones */}
                         </tr>
                     </thead>
                     <tbody>
-                        {devoluciones.map((devolucion) => (
-                            <tr key={devolucion.id}>
-                                <td>{devolucion.id}</td>
-                                <td>{devolucion.idPrestamo}</td>
-                                <td>{devolucion.nombreUsuario}</td>
-                                <td>{new Date(devolucion.fechaDevolucion).toLocaleDateString()}</td>
-                                <td>{devolucion.multa}</td>
+                        {historial.map((registro, index) => (
+                            <tr key={index}>
+                                <td>{registro.id}</td>
+                                <td>{registro.fechaPrestamo ? 'Préstamo' : 'Devolución'}</td> {/* Identifica si es préstamo o devolución */}
+                                <td>{registro.nombreLibro || 'N/A'}</td> {/* Mostrar solo si es préstamo */}
+                                <td>{registro.nombreUsuario}</td>
+                                <td>{new Date(registro.fechaPrestamo || registro.fechaDevolucion).toLocaleDateString()}</td>
+                                <td>{registro.estado || registro.multa || 'N/A'}</td> {/* Mostrar estado o multa */}
                             </tr>
                         ))}
                     </tbody>
@@ -78,4 +80,4 @@ function Devoluciones() {
     );
 }
 
-export default Devoluciones;
+export default Historial;

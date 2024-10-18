@@ -193,3 +193,35 @@ input {
   font-size: 18px;
   color: #333;
 }
+
+.menu-link {
+  color: inherit; /* Para mantener el color del texto */
+  text-decoration: none; /* Elimina el subrayado */
+  cursor: pointer; /* Hace que parezca un botón */
+}
+
+.menu-link:hover {
+  color: #007bff; /* Cambia el color en hover, si lo deseas */
+}
+
+.table-historial {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table-historial th, .table-historial td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table-historial th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.table-historial tr:hover {
+  background-color: #f1f1f1;
+}
+

@@ -2,6 +2,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faBook, faUndo, faSignOutAlt, faRecordVinyl } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import logo from './assets/images/logo.jpeg';
 import './App.css';
 
@@ -17,23 +18,23 @@ function Dashboard() {
         <ul className="sidebar-menu">
             <li>
                 <FontAwesomeIcon icon={faHome} id="icon" />
-                <span>Inicio</span>
+                <Link to="/inicio" className="menu-link">Inicio</Link>
             </li>
             <li>
                 <FontAwesomeIcon icon={faBook} id="icon" />
-                <span>Préstamos</span>
+                <Link to="/prestamos" className="menu-link">Préstamos</Link>
             </li>
             <li>
                 <FontAwesomeIcon icon={faUndo} id="icon" />
-                <span>Devoluciones</span>
+                <Link to="/devoluciones" className="menu-link">Devoluciones</Link>
             </li>
             <li>
                 <FontAwesomeIcon icon={faRecordVinyl} id='icon'/>
-                <span>Historial</span>
+                <Link to="/historiañ" className="menu-link">Historial</Link>
             </li>
             <li>
                 <FontAwesomeIcon icon={faSignOutAlt} id="icon" />
-                <span>Cerrar Sesión</span>
+                <Link to="/logout" className="menu-link">Cerrar Sesión</Link>
             </li>
         </ul>
       </div>

@@ -1,85 +1,36 @@
-// src/Login.js
-import React, { useState, useEffect } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom'; // Para la navegación
-import "./App.css";
+import './App.css';
 import logo from './assets/images/logo.jpeg';
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [captchaValid, setCaptchaValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate(); // Hook para la navegación
 
-  useEffect(() => {
-    if (window.grecaptcha) {
-      window.grecaptcha.enterprise.ready(() => {
-        console.log("reCAPTCHA Enterprise está lista");
-      });
-    }
-  }, []);
-
+  // Manejo del envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (window.grecaptcha) {
-      const token = await window.grecaptcha.enterprise.execute('6Le-LmUqAAAAADh_iHMnTaIYGdQtDw_kpMyRLpOR', { action: 'LOGIN' });
-
-      if (token && captchaValid) {
-        const loginData = {
-          username: username,
-          password: password,
-          token: token
-        };
-
-        fetch("http://localhost:5000/api/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          //body: JSON.stringify(loginData)
-          body: JSON.stringify({username, password})
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            // Redirigir al dashboard
-            navigate('/dashboard');
-          } else {
-            setErrorMessage("Error en la autenticación. Inténtalo de nuevo.");
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          setErrorMessage("Ocurrió un error en el servidor.");
-        });
-      } else {
-        setErrorMessage("Por favor, completa el CAPTCHA.");
-      }
+    // Aquí validamos el usuario y la contraseña
+    if (username === 'admin' && password === '1234') {
+      // Redirige al Dashboard si la autenticación es exitosa
+      window.location.href = '/inicio';
     } else {
-      console.error("reCAPTCHA no está disponible.");
-      setErrorMessage("Error al cargar reCAPTCHA.");
-    }
-  };
-
-  const onChangeCaptcha = (value) => {
-    if (value) {
-      setCaptchaValid(true);
-      setErrorMessage("");
-    } else {
-      setCaptchaValid(false);
+      setErrorMessage("Credenciales incorrectas, inténtalo de nuevo.");
     }
   };
 
   return (
     <div className="login-container">
       <form onSubmit={handleSubmit} className="login-form">
+        {/* Logo de la escuela */}
         <img src={logo} alt="Logo de la escuela" className="school-logo" />
+
         <h2>Inicio de Sesión</h2>
 
+        {/* Campo de usuario con icono */}
         <div className="form-group">
           <label>
             <FontAwesomeIcon icon={faUser} className="icon" /> Usuario:
@@ -92,6 +43,7 @@ function Login() {
           />
         </div>
 
+        {/* Campo de contraseña con icono */}
         <div className="form-group">
           <label>
             <FontAwesomeIcon icon={faLock} className="icon" /> Contraseña:
@@ -104,11 +56,13 @@ function Login() {
           />
         </div>
 
-        <ReCAPTCHA
+        {/* CAPTCHA (Comentado) */}
+        {/* <ReCAPTCHA
           sitekey="6Le-LmUqAAAAADh_iHMnTaIYGdQtDw_kpMyRLpOR"
           onChange={onChangeCaptcha}
-        />
+        /> */}
 
+        {/* Mensaje de error si no se completa el CAPTCHA */}
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         <button type="submit" className="login-btn">Ingresar</button>
@@ -118,3 +72,4 @@ function Login() {
 }
 
 export default Login;
+

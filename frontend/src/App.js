@@ -1,21 +1,23 @@
-// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './Login';
-import Dashboard from './Dashboard';
+import { Routes, Route } from 'react-router-dom';
 import Prestamos from './Prestamos';
 import Devoluciones from './Devoluciones';
+import Dashboard from './Dashboard'; // Si tienes una página de inicio
+import Login from './Login'
+import Historial from './Historial';
 
 function App() {
   return (
-    <Router>
+    <div>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path='/prestamos' element={<Prestamos />} />
-        <Route path='/devoluciones' element={<Devoluciones />} />
+        <Route path="/inicio" element={<Dashboard />} />
+        <Route path="/prestamos" element={<Prestamos />} />
+        <Route path="/devoluciones" element={<Devoluciones />} />
+        <Route path="/historial" element={<Historial />} />
+        <Route path="/logout" element={<Login />} />
       </Routes>
-    </Router>
+    </div>
   );
 }
 
